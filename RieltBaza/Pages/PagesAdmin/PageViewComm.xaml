@@ -1,0 +1,138 @@
+﻿<Page x:Class="RieltBaza.Pages.PagesAdmin.PageViewComm"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:RieltBaza.Pages.PagesAdmin"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1000"
+      Title="Просмотр отзывов">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="61*"/>
+            <ColumnDefinition Width="339*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <Button Height="30" Margin="0 50 0 0"
+                    Content="Недвижимость" 
+                    x:Name="btnNedvizh" Click="btnNedvizh_Click"
+                    Background="#D90368"/>
+
+            <Button Height="30" Margin="0 50 0 0"
+                    Content="Клиенты"
+                    x:Name="btnClient"
+                    Background="#D90368"
+                    Click="btnClient_Click"/>
+
+            <Button Height="30" Margin="0 50 0 0"
+                    Content="Встречи"
+                    x:Name="btnMeet" Click="btnMeet_Click"
+                    Background="#820263"/>
+
+            <Button Height="30" Margin="0 50 0 0"
+                    Content="Сотрудники"
+                    x:Name="btnEmp"
+                    Background="#820263" Click="btnEmp_Click"/>
+
+
+            <Button Height="30" Margin="0 50 0 0"
+                    Content="Отзывы" x:Name="btnComment"
+                    Background="#820263" IsEnabled="False">
+                <Button.Effect>
+                    <DropShadowEffect BlurRadius="-1"/>
+                </Button.Effect>
+            </Button>
+        </StackPanel>
+
+
+
+        <Border Background="White" VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                CornerRadius="20" Padding="30"
+                Height="400" Width="750"
+                Grid.Column="1"
+                Opacity=".8">
+
+            <StackPanel VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                
+                 <StackPanel Orientation="Horizontal"
+                            Margin="0 2 0 0">
+                    <TextBox x:Name="tbSearch" Width="215" 
+                         HorizontalAlignment="Left"
+                             HorizontalContentAlignment="Center"
+                             VerticalContentAlignment="Center"
+                         Height="23"
+                             Margin="0 0 25 0"
+                             Style="{StaticResource tpTextBox}" 
+                             TextChanged="tbSearch_TextChanged" >
+                        <TextBox.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+
+                    <ComboBox x:Name="cmbSort" Width="175"
+                              Style="{StaticResource cmbBord}"
+                              Margin="0 0 25 0"
+                              IsEditable="True"
+                              SelectionChanged="cmbSort_SelectionChanged"/> 
+                     
+                    <ComboBox x:Name="cmbFilt" Width="250"
+                               Style="{StaticResource cmbBord}"
+                              IsEditable="True"
+                                SelectionChanged="cmbFilt_SelectionChanged" />
+                </StackPanel>
+
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <ListBox Width="690"
+                             Height="320"
+                             x:Name="lbDataComm">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <ListBoxItem>
+                                    <StackPanel>
+
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="/Resource_IDE/User.png" 
+                                                   Width="75"
+                                                   Height="75"
+                                                   Margin="0 0 10 0"/>
+
+                                            <StackPanel  VerticalAlignment="Center">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="От кого: "/>
+                                                    <TextBlock Text="{Binding cnt_SN}"/>
+                                                    <TextBlock Text=" "/>
+                                                    <TextBlock Text="{Binding Cnt_FN}"/>
+                                                </StackPanel>
+
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="Предназначен для: "/>
+                                                    <TextBlock Text="{Binding emp_SN}"/>
+                                                    <TextBlock Text=" "/>
+                                                    <TextBlock Text="{Binding emp_FN}"/>
+                                                </StackPanel>
+
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="Отзыв: "/>
+                                                    <TextBlock Text="{Binding Name}"/>
+                                                    <TextBlock Text=" | Оценка: "/>
+                                                    <TextBlock Text="{Binding star}"/>
+                                                </StackPanel>
+
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </ListBoxItem>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </ScrollViewer>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

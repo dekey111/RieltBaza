@@ -1,0 +1,139 @@
+﻿<Application x:Class="RieltBaza.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:RieltBaza"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        
+        <Style TargetType="TextBlock">
+            <Setter Property = "FontFamily" Value="Conslans"/>
+            <Setter Property = "FontSize" Value="14"/>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property = "FontFamily" Value="Conslans"/>
+            <Setter Property = "FontSize" Value="14"/>
+            <Setter Property = "Background" Value="#FF6C2092"/>
+            <Setter Property = "Foreground" Value="White"/>
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property = "FontFamily" Value="Conslans"/>
+            <Setter Property = "FontSize" Value="14"/>
+            <Setter Property = "Background" Value="#FF6C2092"/>
+            <Setter Property = "Foreground" Value="#FF6C2092"/>
+        </Style>
+        
+        <Style TargetType="TextBox">
+            <Setter Property = "FontFamily" Value="Conslans"/>
+            <Setter Property = "FontSize" Value="14"/>
+            <Setter Property = "Background" Value="#FF6C2092"/>
+            <Setter Property = "Foreground" Value="White"/>
+        </Style>
+
+        <Style TargetType="TextBox" x:Key="tpTextBox">
+            <Setter Property = "FontFamily" Value="Conslans"/>
+            <Setter Property = "FontSize" Value="14"/>
+            <Setter Property = "Background" Value="#FFD8B5EA"/>
+            <Setter Property = "Foreground" Value="Black"/>
+        </Style>
+
+        <Style TargetType="PasswordBox" x:Key="tpPasswordBox">
+            <Setter Property = "FontFamily" Value="Conslans"/>
+            <Setter Property = "FontSize" Value="14"/>
+            <Setter Property = "Background" Value="#FFD8B5EA"/>
+            <Setter Property = "Foreground" Value="Black"/>
+        </Style>
+
+        <Style x:Key="cmbBord" TargetType="{x:Type ComboBox}">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="IsEditable" Value="True"/>
+            <Setter Property="Height" Value="23"/>
+            <Setter Property="Width" Value="175"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Grid>
+                            <ToggleButton Grid.Column="2" 
+                                  Focusable="false" 
+                                  IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}" >
+                                <ToggleButton.Template>
+                                    <ControlTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="10*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Border x:Name="brd"  
+                                                Grid.ColumnSpan="2" 
+                                                CornerRadius="10" 
+                                                Background="#FFD8B5EA" />
+                                            <Border Grid.Column="0" 
+                                                CornerRadius="10,0,0,10"
+                                                Background="Transparent" 
+                                                BorderBrush="Black"
+                                                Margin="4"
+                                                BorderThickness="0,0,1,0" />
+                                            <Path x:Name="Arrow"
+                                              Grid.Column="1" 
+                                              Fill="Black" 
+                                              HorizontalAlignment="Center" 
+                                              VerticalAlignment="Center" 
+                                              Data="F0 M 0,0 L 2.5,5 L 5,0 L 5,-2 L 2.5,1 L0,-2 L0,0 Z"/>
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="ToggleButton.IsMouseOver" 
+                                             Value="true">
+                                                <Setter TargetName="brd" 
+                                                Property="Background" 
+                                                Value="#FFD8B5EA" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </ToggleButton.Template>
+                            </ToggleButton>
+                            <ContentPresenter Name="ContentSite" 
+                                      IsHitTestVisible="False" 
+                                      Content="{TemplateBinding SelectionBoxItem}" 
+                                      ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" 
+                                      ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" 
+                                      Margin="3"  />
+                            <TextBox x:Name="PART_EditableTextBox"
+                                 Width="auto"
+                                 MaxWidth="220"
+                                 Foreground="Black"
+                                 HorizontalAlignment="Left"
+                                 Padding="5,0,0,0"
+                                 Background="Transparent"
+                                 Opacity="1"
+                                 BorderBrush="Transparent"/>
+                            <Popup Name="Popup" 
+                               Placement="Bottom"
+                               IsOpen="{TemplateBinding IsDropDownOpen}"
+                               AllowsTransparency="True"  
+                               Focusable="False" 
+                               PopupAnimation="Slide">
+                                <Grid  Name="DropDown" 
+                                   SnapsToDevicePixels="True" 
+                                   MinWidth="{TemplateBinding ActualWidth}"
+                                   MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                    <Border x:Name="DropDownBorder" 
+                                        Background="#FFD8B5EA" />
+                                    <ScrollViewer SnapsToDevicePixels="True">
+                                        <StackPanel IsItemsHost="True" />
+                                    </ScrollViewer>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+            </Style.Triggers>
+        </Style>
+
+    </Application.Resources>
+</Application>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bec522eba2f145b8b2efa98ff5f5515f" Name="Diagram1">
+        <EntityTypeShape EntityType="RieltorModel.Adress" Width="1.5" PointX="3" PointY="6.5" />
+        <EntityTypeShape EntityType="RieltorModel.City" Width="1.5" PointX="0.75" PointY="4.125" />
+        <EntityTypeShape EntityType="RieltorModel.Client" Width="1.5" PointX="5.25" PointY="9.875" />
+        <EntityTypeShape EntityType="RieltorModel.Comment" Width="1.5" PointX="7.5" PointY="10.5" />
+        <EntityTypeShape EntityType="RieltorModel.Employee" Width="1.5" PointX="5.25" PointY="6" />
+        <EntityTypeShape EntityType="RieltorModel.Objects" Width="1.5" PointX="5.25" PointY="2.5" />
+        <EntityTypeShape EntityType="RieltorModel.Role" Width="1.5" PointX="7.75" PointY="1.25" />
+        <EntityTypeShape EntityType="RieltorModel.Steet" Width="1.5" PointX="0.75" PointY="7.125" />
+        <EntityTypeShape EntityType="RieltorModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="RieltorModel.Tabel" Width="1.5" PointX="7.5" PointY="6.75" />
+        <EntityTypeShape EntityType="RieltorModel.User" Width="1.5" PointX="10" PointY="0.875" />
+        <EntityTypeShape EntityType="RieltorModel.Client_City" Width="1.5" PointX="9.75" PointY="4.75" />
+        <EntityTypeShape EntityType="RieltorModel.comm" Width="1.5" PointX="9.75" PointY="7.75" />
+        <EntityTypeShape EntityType="RieltorModel.Emp_Citys" Width="1.5" PointX="0.75" PointY="10.75" />
+        <AssociationConnector Association="RieltorModel.FK_Adress_City" />
+        <AssociationConnector Association="RieltorModel.FK_Adress_Steet" />
+        <AssociationConnector Association="RieltorModel.FK_Client_Adress" />
+        <AssociationConnector Association="RieltorModel.FK_Employee_Adress1" />
+        <AssociationConnector Association="RieltorModel.FK_Objects_Adress" />
+        <AssociationConnector Association="RieltorModel.FK_Comment_Client" />
+        <AssociationConnector Association="RieltorModel.FK_Tabel_Client" />
+        <AssociationConnector Association="RieltorModel.FK_Сomment_Employee" />
+        <AssociationConnector Association="RieltorModel.FK_Tabel_Employee" />
+        <AssociationConnector Association="RieltorModel.FK_Tabel_Objects" />
+        <AssociationConnector Association="RieltorModel.FK_User_Role" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

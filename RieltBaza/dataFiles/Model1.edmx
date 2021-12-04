@@ -1,0 +1,969 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище RieltorModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Adress">
+          <Key>
+            <PropertyRef Name="ID_Adress" />
+          </Key>
+          <Property Name="ID_Adress" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_City" Type="int" Nullable="false" />
+          <Property Name="id_Street" Type="int" Nullable="false" />
+          <Property Name="House" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="ID_City" />
+          </Key>
+          <Property Name="ID_City" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ID_Client" />
+          </Key>
+          <Property Name="ID_Client" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SecondName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date_of_Birth" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="id_Adress" Type="int" Nullable="false" />
+          <Property Name="Image" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="ID_Comment" />
+          </Key>
+          <Property Name="ID_Comment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="star" Type="float" Nullable="false" />
+          <Property Name="id_Client" Type="int" Nullable="false" />
+          <Property Name="id_emp" Type="int" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID_Emp" />
+          </Key>
+          <Property Name="ID_Emp" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SecondName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date_of_Birth" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="id_Adress" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Objects">
+          <Key>
+            <PropertyRef Name="ID_Objects" />
+          </Key>
+          <Property Name="ID_Objects" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_Adress" Type="int" Nullable="false" />
+          <Property Name="SQ_FT" Type="int" Nullable="false" />
+          <Property Name="Room" Type="int" Nullable="false" />
+          <Property Name="Floor" Type="int" Nullable="false" />
+          <Property Name="CountFloor" Type="int" Nullable="false" />
+          <Property Name="Image" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID_Role" />
+          </Key>
+          <Property Name="ID_Role" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Steet">
+          <Key>
+            <PropertyRef Name="ID_Street" />
+          </Key>
+          <Property Name="ID_Street" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tabel">
+          <Key>
+            <PropertyRef Name="ID_Tab" />
+          </Key>
+          <Property Name="ID_Tab" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_Emp" Type="int" />
+          <Property Name="id_Client" Type="int" />
+          <Property Name="id_Obj" Type="int" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID_User" />
+          </Key>
+          <Property Name="ID_User" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Emp" Type="int" Nullable="false" />
+          <Property Name="id_Role" Type="int" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Rieltor.dbo.Client_City" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Client_City">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="ID_Adress" />
+          </Key>
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_Adress" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Rieltor.dbo.comm" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="comm">
+          <Key>
+            <PropertyRef Name="emp_SN" />
+            <PropertyRef Name="emp_FN" />
+            <PropertyRef Name="emp_P" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="star" />
+            <PropertyRef Name="cnt_SN" />
+            <PropertyRef Name="Cnt_FN" />
+            <PropertyRef Name="Cnt_P" />
+            <PropertyRef Name="ID_Comment" />
+          </Key>
+          <Property Name="emp_SN" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="emp_FN" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="emp_P" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="star" Type="float" Nullable="false" />
+          <Property Name="cnt_SN" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cnt_FN" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cnt_P" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_Comment" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Rieltor.dbo.Emp_Citys" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Emp_Citys">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="SecondName" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="Patronymic" />
+            <PropertyRef Name="Str_Name" />
+            <PropertyRef Name="Phone" />
+            <PropertyRef Name="Date_of_Birth" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="ID_Emp" />
+            <PropertyRef Name="ID_City" />
+          </Key>
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SecondName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="House" Type="nvarchar" MaxLength="50" />
+          <Property Name="Str_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date_of_Birth" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_Emp" Type="int" Nullable="false" />
+          <Property Name="ID_City" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Adress_City">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="Adress" Type="Self.Adress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="ID_City" />
+            </Principal>
+            <Dependent Role="Adress">
+              <PropertyRef Name="id_City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adress_Steet">
+          <End Role="Steet" Type="Self.Steet" Multiplicity="1" />
+          <End Role="Adress" Type="Self.Adress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Steet">
+              <PropertyRef Name="ID_Street" />
+            </Principal>
+            <Dependent Role="Adress">
+              <PropertyRef Name="id_Street" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_Adress">
+          <End Role="Adress" Type="Self.Adress" Multiplicity="1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adress">
+              <PropertyRef Name="ID_Adress" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="id_Adress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ID_Client" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="id_Client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Adress1">
+          <End Role="Adress" Type="Self.Adress" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adress">
+              <PropertyRef Name="ID_Adress" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="id_Adress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Objects_Adress">
+          <End Role="Adress" Type="Self.Adress" Multiplicity="1" />
+          <End Role="Objects" Type="Self.Objects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adress">
+              <PropertyRef Name="ID_Adress" />
+            </Principal>
+            <Dependent Role="Objects">
+              <PropertyRef Name="id_Adress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tabel_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="Tabel" Type="Self.Tabel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ID_Client" />
+            </Principal>
+            <Dependent Role="Tabel">
+              <PropertyRef Name="id_Client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tabel_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Tabel" Type="Self.Tabel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID_Emp" />
+            </Principal>
+            <Dependent Role="Tabel">
+              <PropertyRef Name="id_Emp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tabel_Objects">
+          <End Role="Objects" Type="Self.Objects" Multiplicity="0..1" />
+          <End Role="Tabel" Type="Self.Tabel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Objects">
+              <PropertyRef Name="ID_Objects" />
+            </Principal>
+            <Dependent Role="Tabel">
+              <PropertyRef Name="id_Obj" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID_Role" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="id_Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Сomment_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID_Emp" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="id_emp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище RieltorModelContainer">
+          <EntitySet Name="Adress" EntityType="Self.Adress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Objects" EntityType="Self.Objects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Steet" EntityType="Self.Steet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tabel" EntityType="Self.Tabel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client_City" EntityType="Self.Client_City" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Client_City].[Name] AS [Name], 
+    [Client_City].[ID_Adress] AS [ID_Adress]
+    FROM [dbo].[Client_City] AS [Client_City]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="comm" EntityType="Self.comm" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [comm].[emp_SN] AS [emp_SN], 
+    [comm].[emp_FN] AS [emp_FN], 
+    [comm].[emp_P] AS [emp_P], 
+    [comm].[Name] AS [Name], 
+    [comm].[star] AS [star], 
+    [comm].[cnt_SN] AS [cnt_SN], 
+    [comm].[Cnt_FN] AS [Cnt_FN], 
+    [comm].[Cnt_P] AS [Cnt_P], 
+    [comm].[ID_Comment] AS [ID_Comment]
+    FROM [dbo].[comm] AS [comm]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Emp_Citys" EntityType="Self.Emp_Citys" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Emp_Citys].[Name] AS [Name], 
+    [Emp_Citys].[SecondName] AS [SecondName], 
+    [Emp_Citys].[FirstName] AS [FirstName], 
+    [Emp_Citys].[Patronymic] AS [Patronymic], 
+    [Emp_Citys].[House] AS [House], 
+    [Emp_Citys].[Str_Name] AS [Str_Name], 
+    [Emp_Citys].[Phone] AS [Phone], 
+    [Emp_Citys].[Date_of_Birth] AS [Date_of_Birth], 
+    [Emp_Citys].[Email] AS [Email], 
+    [Emp_Citys].[ID_Emp] AS [ID_Emp], 
+    [Emp_Citys].[ID_City] AS [ID_City]
+    FROM [dbo].[Emp_Citys] AS [Emp_Citys]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Adress_City" Association="Self.FK_Adress_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Adress" EntitySet="Adress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adress_Steet" Association="Self.FK_Adress_Steet">
+            <End Role="Steet" EntitySet="Steet" />
+            <End Role="Adress" EntitySet="Adress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_Adress" Association="Self.FK_Client_Adress">
+            <End Role="Adress" EntitySet="Adress" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_Client" Association="Self.FK_Comment_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Adress1" Association="Self.FK_Employee_Adress1">
+            <End Role="Adress" EntitySet="Adress" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Objects_Adress" Association="Self.FK_Objects_Adress">
+            <End Role="Adress" EntitySet="Adress" />
+            <End Role="Objects" EntitySet="Objects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tabel_Client" Association="Self.FK_Tabel_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Tabel" EntitySet="Tabel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tabel_Employee" Association="Self.FK_Tabel_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Tabel" EntitySet="Tabel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tabel_Objects" Association="Self.FK_Tabel_Objects">
+            <End Role="Objects" EntitySet="Objects" />
+            <End Role="Tabel" EntitySet="Tabel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Сomment_Employee" Association="Self.FK_Сomment_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RieltorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="RieltorEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Adress" EntityType="RieltorModel.Adress" />
+          <EntitySet Name="City" EntityType="RieltorModel.City" />
+          <EntitySet Name="Client" EntityType="RieltorModel.Client" />
+          <EntitySet Name="Comment" EntityType="RieltorModel.Comment" />
+          <EntitySet Name="Employee" EntityType="RieltorModel.Employee" />
+          <EntitySet Name="Objects" EntityType="RieltorModel.Objects" />
+          <EntitySet Name="Role" EntityType="RieltorModel.Role" />
+          <EntitySet Name="Steet" EntityType="RieltorModel.Steet" />
+          <EntitySet Name="sysdiagrams" EntityType="RieltorModel.sysdiagrams" />
+          <EntitySet Name="Tabel" EntityType="RieltorModel.Tabel" />
+          <EntitySet Name="User" EntityType="RieltorModel.User" />
+          <EntitySet Name="Client_City" EntityType="RieltorModel.Client_City" />
+          <EntitySet Name="comm" EntityType="RieltorModel.comm" />
+          <EntitySet Name="Emp_Citys" EntityType="RieltorModel.Emp_Citys" />
+          <AssociationSet Name="FK_Adress_City" Association="RieltorModel.FK_Adress_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Adress" EntitySet="Adress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adress_Steet" Association="RieltorModel.FK_Adress_Steet">
+            <End Role="Steet" EntitySet="Steet" />
+            <End Role="Adress" EntitySet="Adress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_Adress" Association="RieltorModel.FK_Client_Adress">
+            <End Role="Adress" EntitySet="Adress" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Adress1" Association="RieltorModel.FK_Employee_Adress1">
+            <End Role="Adress" EntitySet="Adress" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Objects_Adress" Association="RieltorModel.FK_Objects_Adress">
+            <End Role="Adress" EntitySet="Adress" />
+            <End Role="Objects" EntitySet="Objects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_Client" Association="RieltorModel.FK_Comment_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tabel_Client" Association="RieltorModel.FK_Tabel_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Tabel" EntitySet="Tabel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Сomment_Employee" Association="RieltorModel.FK_Сomment_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tabel_Employee" Association="RieltorModel.FK_Tabel_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Tabel" EntitySet="Tabel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tabel_Objects" Association="RieltorModel.FK_Tabel_Objects">
+            <End Role="Objects" EntitySet="Objects" />
+            <End Role="Tabel" EntitySet="Tabel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="RieltorModel.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Adress">
+          <Key>
+            <PropertyRef Name="ID_Adress" />
+          </Key>
+          <Property Name="ID_Adress" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_City" Type="Int32" Nullable="false" />
+          <Property Name="id_Street" Type="Int32" Nullable="false" />
+          <Property Name="House" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="City" Relationship="RieltorModel.FK_Adress_City" FromRole="Adress" ToRole="City" />
+          <NavigationProperty Name="Steet" Relationship="RieltorModel.FK_Adress_Steet" FromRole="Adress" ToRole="Steet" />
+          <NavigationProperty Name="Client" Relationship="RieltorModel.FK_Client_Adress" FromRole="Adress" ToRole="Client" />
+          <NavigationProperty Name="Employee" Relationship="RieltorModel.FK_Employee_Adress1" FromRole="Adress" ToRole="Employee" />
+          <NavigationProperty Name="Objects" Relationship="RieltorModel.FK_Objects_Adress" FromRole="Adress" ToRole="Objects" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="ID_City" />
+          </Key>
+          <Property Name="ID_City" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Adress" Relationship="RieltorModel.FK_Adress_City" FromRole="City" ToRole="Adress" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ID_Client" />
+          </Key>
+          <Property Name="ID_Client" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SecondName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date_of_Birth" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id_Adress" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Adress" Relationship="RieltorModel.FK_Client_Adress" FromRole="Client" ToRole="Adress" />
+          <NavigationProperty Name="Comment" Relationship="RieltorModel.FK_Comment_Client" FromRole="Client" ToRole="Comment" />
+          <NavigationProperty Name="Tabel" Relationship="RieltorModel.FK_Tabel_Client" FromRole="Client" ToRole="Tabel" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="ID_Comment" />
+          </Key>
+          <Property Name="ID_Comment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="star" Type="Double" Nullable="false" />
+          <Property Name="id_Client" Type="Int32" Nullable="false" />
+          <Property Name="id_emp" Type="Int32" />
+          <NavigationProperty Name="Client" Relationship="RieltorModel.FK_Comment_Client" FromRole="Comment" ToRole="Client" />
+          <NavigationProperty Name="Employee" Relationship="RieltorModel.FK_Сomment_Employee" FromRole="Comment" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID_Emp" />
+          </Key>
+          <Property Name="ID_Emp" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SecondName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date_of_Birth" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id_Adress" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Adress" Relationship="RieltorModel.FK_Employee_Adress1" FromRole="Employee" ToRole="Adress" />
+          <NavigationProperty Name="Comment" Relationship="RieltorModel.FK_Сomment_Employee" FromRole="Employee" ToRole="Comment" />
+          <NavigationProperty Name="Tabel" Relationship="RieltorModel.FK_Tabel_Employee" FromRole="Employee" ToRole="Tabel" />
+        </EntityType>
+        <EntityType Name="Objects">
+          <Key>
+            <PropertyRef Name="ID_Objects" />
+          </Key>
+          <Property Name="ID_Objects" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Adress" Type="Int32" Nullable="false" />
+          <Property Name="SQ_FT" Type="Int32" Nullable="false" />
+          <Property Name="Room" Type="Int32" Nullable="false" />
+          <Property Name="Floor" Type="Int32" Nullable="false" />
+          <Property Name="CountFloor" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Adress" Relationship="RieltorModel.FK_Objects_Adress" FromRole="Objects" ToRole="Adress" />
+          <NavigationProperty Name="Tabel" Relationship="RieltorModel.FK_Tabel_Objects" FromRole="Objects" ToRole="Tabel" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID_Role" />
+          </Key>
+          <Property Name="ID_Role" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="RieltorModel.FK_User_Role" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Steet">
+          <Key>
+            <PropertyRef Name="ID_Street" />
+          </Key>
+          <Property Name="ID_Street" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Adress" Relationship="RieltorModel.FK_Adress_Steet" FromRole="Steet" ToRole="Adress" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tabel">
+          <Key>
+            <PropertyRef Name="ID_Tab" />
+          </Key>
+          <Property Name="ID_Tab" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Emp" Type="Int32" />
+          <Property Name="id_Client" Type="Int32" />
+          <Property Name="id_Obj" Type="Int32" />
+          <NavigationProperty Name="Client" Relationship="RieltorModel.FK_Tabel_Client" FromRole="Tabel" ToRole="Client" />
+          <NavigationProperty Name="Employee" Relationship="RieltorModel.FK_Tabel_Employee" FromRole="Tabel" ToRole="Employee" />
+          <NavigationProperty Name="Objects" Relationship="RieltorModel.FK_Tabel_Objects" FromRole="Tabel" ToRole="Objects" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID_User" />
+          </Key>
+          <Property Name="ID_User" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Emp" Type="Int32" Nullable="false" />
+          <Property Name="id_Role" Type="Int32" Nullable="false" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Role" Relationship="RieltorModel.FK_User_Role" FromRole="User" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="Client_City">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="ID_Adress" />
+          </Key>
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Adress" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="comm">
+          <Key>
+            <PropertyRef Name="emp_SN" />
+            <PropertyRef Name="emp_FN" />
+            <PropertyRef Name="emp_P" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="star" />
+            <PropertyRef Name="cnt_SN" />
+            <PropertyRef Name="Cnt_FN" />
+            <PropertyRef Name="Cnt_P" />
+            <PropertyRef Name="ID_Comment" />
+          </Key>
+          <Property Name="emp_SN" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="emp_FN" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="emp_P" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="star" Type="Double" Nullable="false" />
+          <Property Name="cnt_SN" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cnt_FN" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cnt_P" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Comment" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Emp_Citys">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="SecondName" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="Patronymic" />
+            <PropertyRef Name="Str_Name" />
+            <PropertyRef Name="Phone" />
+            <PropertyRef Name="Date_of_Birth" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="ID_Emp" />
+            <PropertyRef Name="ID_City" />
+          </Key>
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SecondName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="House" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Str_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date_of_Birth" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Emp" Type="Int32" Nullable="false" />
+          <Property Name="ID_City" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Adress_City">
+          <End Type="RieltorModel.City" Role="City" Multiplicity="1" />
+          <End Type="RieltorModel.Adress" Role="Adress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="ID_City" />
+            </Principal>
+            <Dependent Role="Adress">
+              <PropertyRef Name="id_City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adress_Steet">
+          <End Type="RieltorModel.Steet" Role="Steet" Multiplicity="1" />
+          <End Type="RieltorModel.Adress" Role="Adress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Steet">
+              <PropertyRef Name="ID_Street" />
+            </Principal>
+            <Dependent Role="Adress">
+              <PropertyRef Name="id_Street" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_Adress">
+          <End Type="RieltorModel.Adress" Role="Adress" Multiplicity="1" />
+          <End Type="RieltorModel.Client" Role="Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adress">
+              <PropertyRef Name="ID_Adress" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="id_Adress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Adress1">
+          <End Type="RieltorModel.Adress" Role="Adress" Multiplicity="1" />
+          <End Type="RieltorModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adress">
+              <PropertyRef Name="ID_Adress" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="id_Adress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Objects_Adress">
+          <End Type="RieltorModel.Adress" Role="Adress" Multiplicity="1" />
+          <End Type="RieltorModel.Objects" Role="Objects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adress">
+              <PropertyRef Name="ID_Adress" />
+            </Principal>
+            <Dependent Role="Objects">
+              <PropertyRef Name="id_Adress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_Client">
+          <End Type="RieltorModel.Client" Role="Client" Multiplicity="1" />
+          <End Type="RieltorModel.Comment" Role="Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ID_Client" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="id_Client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tabel_Client">
+          <End Type="RieltorModel.Client" Role="Client" Multiplicity="0..1" />
+          <End Type="RieltorModel.Tabel" Role="Tabel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ID_Client" />
+            </Principal>
+            <Dependent Role="Tabel">
+              <PropertyRef Name="id_Client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Сomment_Employee">
+          <End Type="RieltorModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="RieltorModel.Comment" Role="Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID_Emp" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="id_emp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tabel_Employee">
+          <End Type="RieltorModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="RieltorModel.Tabel" Role="Tabel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID_Emp" />
+            </Principal>
+            <Dependent Role="Tabel">
+              <PropertyRef Name="id_Emp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tabel_Objects">
+          <End Type="RieltorModel.Objects" Role="Objects" Multiplicity="0..1" />
+          <End Type="RieltorModel.Tabel" Role="Tabel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Objects">
+              <PropertyRef Name="ID_Objects" />
+            </Principal>
+            <Dependent Role="Tabel">
+              <PropertyRef Name="id_Obj" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Type="RieltorModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="RieltorModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID_Role" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="id_Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище RieltorModelContainer" CdmEntityContainer="RieltorEntities">
+          <EntitySetMapping Name="Adress">
+            <EntityTypeMapping TypeName="RieltorModel.Adress">
+              <MappingFragment StoreEntitySet="Adress">
+                <ScalarProperty Name="House" ColumnName="House" />
+                <ScalarProperty Name="id_Street" ColumnName="id_Street" />
+                <ScalarProperty Name="id_City" ColumnName="id_City" />
+                <ScalarProperty Name="ID_Adress" ColumnName="ID_Adress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="City">
+            <EntityTypeMapping TypeName="RieltorModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID_City" ColumnName="ID_City" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="RieltorModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="id_Adress" ColumnName="id_Adress" />
+                <ScalarProperty Name="Date_of_Birth" ColumnName="Date_of_Birth" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="SecondName" ColumnName="SecondName" />
+                <ScalarProperty Name="ID_Client" ColumnName="ID_Client" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comment">
+            <EntityTypeMapping TypeName="RieltorModel.Comment">
+              <MappingFragment StoreEntitySet="Comment">
+                <ScalarProperty Name="id_emp" ColumnName="id_emp" />
+                <ScalarProperty Name="id_Client" ColumnName="id_Client" />
+                <ScalarProperty Name="star" ColumnName="star" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID_Comment" ColumnName="ID_Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="RieltorModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="id_Adress" ColumnName="id_Adress" />
+                <ScalarProperty Name="Date_of_Birth" ColumnName="Date_of_Birth" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="SecondName" ColumnName="SecondName" />
+                <ScalarProperty Name="ID_Emp" ColumnName="ID_Emp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Objects">
+            <EntityTypeMapping TypeName="RieltorModel.Objects">
+              <MappingFragment StoreEntitySet="Objects">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="CountFloor" ColumnName="CountFloor" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="Room" ColumnName="Room" />
+                <ScalarProperty Name="SQ_FT" ColumnName="SQ_FT" />
+                <ScalarProperty Name="id_Adress" ColumnName="id_Adress" />
+                <ScalarProperty Name="ID_Objects" ColumnName="ID_Objects" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="RieltorModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID_Role" ColumnName="ID_Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Steet">
+            <EntityTypeMapping TypeName="RieltorModel.Steet">
+              <MappingFragment StoreEntitySet="Steet">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID_Street" ColumnName="ID_Street" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="RieltorModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tabel">
+            <EntityTypeMapping TypeName="RieltorModel.Tabel">
+              <MappingFragment StoreEntitySet="Tabel">
+                <ScalarProperty Name="id_Obj" ColumnName="id_Obj" />
+                <ScalarProperty Name="id_Client" ColumnName="id_Client" />
+                <ScalarProperty Name="id_Emp" ColumnName="id_Emp" />
+                <ScalarProperty Name="ID_Tab" ColumnName="ID_Tab" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="RieltorModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="id_Role" ColumnName="id_Role" />
+                <ScalarProperty Name="Id_Emp" ColumnName="Id_Emp" />
+                <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client_City">
+            <EntityTypeMapping TypeName="RieltorModel.Client_City">
+              <MappingFragment StoreEntitySet="Client_City">
+                <ScalarProperty Name="ID_Adress" ColumnName="ID_Adress" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="comm">
+            <EntityTypeMapping TypeName="RieltorModel.comm">
+              <MappingFragment StoreEntitySet="comm">
+                <ScalarProperty Name="ID_Comment" ColumnName="ID_Comment" />
+                <ScalarProperty Name="Cnt_P" ColumnName="Cnt_P" />
+                <ScalarProperty Name="Cnt_FN" ColumnName="Cnt_FN" />
+                <ScalarProperty Name="cnt_SN" ColumnName="cnt_SN" />
+                <ScalarProperty Name="star" ColumnName="star" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="emp_P" ColumnName="emp_P" />
+                <ScalarProperty Name="emp_FN" ColumnName="emp_FN" />
+                <ScalarProperty Name="emp_SN" ColumnName="emp_SN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Emp_Citys">
+            <EntityTypeMapping TypeName="RieltorModel.Emp_Citys">
+              <MappingFragment StoreEntitySet="Emp_Citys">
+                <ScalarProperty Name="ID_City" ColumnName="ID_City" />
+                <ScalarProperty Name="ID_Emp" ColumnName="ID_Emp" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Date_of_Birth" ColumnName="Date_of_Birth" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Str_Name" ColumnName="Str_Name" />
+                <ScalarProperty Name="House" ColumnName="House" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="SecondName" ColumnName="SecondName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
